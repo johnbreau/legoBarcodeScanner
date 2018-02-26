@@ -65,7 +65,6 @@ export class SetEntryPage implements OnInit, OnChanges {
           objectStore.createIndex('setYear', 'setYear', { unique: false });
           objectStore.createIndex('setTheme', 'setTheme', { unique: false });
           objectStore.createIndex('storageLocation', 'storageLocation', { unique: false });
-       console.log('anything?', objectStore);
   }
 
   getSet() {
