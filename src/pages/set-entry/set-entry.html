@@ -10,5 +10,84 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Repos view page</h3>
+  <div class="container upper-form">
+    <form [formGroup]="setForm" class="container">
+      <div class="row">
+        <div class="form-group col-sm-12 col-md-6">
+          <label for="setName">Set Name</label>
+          <input type="text"
+                class="form-control"
+                formControlName="setName"
+                id="setName" required>
+        </div>
+
+        <div class="form-group col-sm-12 col-md-6">
+          <label for="setNumber">Set Number</label>
+          <input type="text"
+                class="form-control"
+                formControlName="setNumber"
+                id="setNumber" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-sm-12 col-md-6">
+          <label for="setPieces">Number of Pieces</label>
+          <input type="text"
+                class="form-control"
+                formControlName="setPieces"
+                id="setPieces">
+        </div>
+
+        <div class="form-group col-sm-12 col-md-6">
+          <label for="setYear">Year</label>
+          <input type="text"
+                class="form-control"
+                formControlName="setYear"
+                id="setYear">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-sm-12 col-md-6">
+          <label for="setTheme">Theme</label>
+          <input type="text"
+                class="form-control"
+                formControlName="setTheme"
+                id="setTheme">
+        </div>
+
+        <div class="form-group col-sm-12 col-md-6">
+          <label for="storageLocation">Storage Location</label>
+          <input type="text"
+                class="form-control"
+                formControlName="storageLocation"
+                id="storageLocation">
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="button" class="btn btn-primary" (click)="getSet()">Get Sets</button>
+
+    </form>
+  </div>
+  <div class="container-fluid">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Set Name</th>
+            <th>Set Number </th>
+            <th>No. of Pieces</th>
+            <th>Set Year</th>
+            <th>Set Theme</th>
+            <th>Storage Location</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
 </ion-content>
