@@ -1,0 +1,8 @@
+{
+  "name": "githubIonic",
+  "app_id": "33674932",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
