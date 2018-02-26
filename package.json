@@ -1,8 +1,8 @@
 {
-  "name": "githubIonic",
+  "name": "legoBarcodeScanner",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "author": "John Breau",
+  "homepage": "http://www.breaudesign.com",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -35,5 +35,5 @@
     "@ionic/app-scripts": "3.1.8",
     "typescript": "2.4.2"
   },
-  "description": "An Ionic project"
+  "description": "An App for Scanning Lego Barcodes"
 }
