@@ -4,13 +4,18 @@
       <ion-icon name="menu"></ion-icon> 
     </button>
     <ion-title>
-      Repos
+      Collection...
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <div class="container upper-form">
+  <div class="container">
+    <div class="row px-5 mb-20">
+        <button class="col- btn btn-outline-primary btn-block scan-button" (click)="scanButton()" type="submit">Barcode Scan</button>
+    </div>
+  </div>
+  <div class="container">
     <form [formGroup]="setForm" class="container">
       <div class="row">
         <div class="form-group col-sm-12 col-md-6">
@@ -48,7 +53,7 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row mb-20">
         <div class="form-group col-sm-12 col-md-6">
           <label for="setTheme">Theme</label>
           <input type="text"
@@ -65,29 +70,9 @@
                 id="storageLocation">
         </div>
       </div>
-
-      <button type="submit" class="btn btn-success">Submit</button>
-      <button type="button" class="btn btn-primary" (click)="getSet()">Get Sets</button>
-
+      <div class="row px-3">
+        <button type="submit" class="btn btn-success btn-block">Add Set</button>
+      </div>
     </form>
-  </div>
-  <div class="container-fluid">
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Set Name</th>
-            <th>Set Number </th>
-            <th>No. of Pieces</th>
-            <th>Set Year</th>
-            <th>Set Theme</th>
-            <th>Storage Location</th>
-          </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
-      </table>
-    </div>
   </div>
 </ion-content>

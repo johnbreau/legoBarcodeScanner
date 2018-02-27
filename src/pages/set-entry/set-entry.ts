@@ -1,4 +1,5 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 // import { Set } from '../setInterface';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -22,7 +23,8 @@ export class SetEntryPage implements OnInit, OnChanges {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private barcodeScanner: BarcodeScanner) {
   }
 
   ngOnInit() {
@@ -63,7 +65,6 @@ export class SetEntryPage implements OnInit, OnChanges {
           objectStore.createIndex('setYear', 'setYear', { unique: false });
           objectStore.createIndex('setTheme', 'setTheme', { unique: false });
           objectStore.createIndex('storageLocation', 'storageLocation', { unique: false });
-       console.log('anything?', objectStore);
   }
 
   getSet() {
@@ -74,4 +75,12 @@ export class SetEntryPage implements OnInit, OnChanges {
     console.log('ionViewDidLoad SetEntryPage');
   }
 
+  scanButton() {
+    console.log('scan initiated');
+    this.barcodeScanner.scan().then((barcodeData) => {
+      console.log(barcodeData);
+     }, (err) => {
+         // An error occurred
+     });
+  }
 }
