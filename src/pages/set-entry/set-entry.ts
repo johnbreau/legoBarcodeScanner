@@ -61,10 +61,6 @@ export class SetEntryPage implements OnInit, OnChanges {
           objectStore.createIndex('storageLocation', 'storageLocation', { unique: false });
   }
 
-  getSet() {
-    window.alert('getSet!');
-  }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad SetEntryPage');
   }

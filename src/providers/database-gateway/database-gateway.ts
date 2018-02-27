@@ -14,6 +14,7 @@ export class DatabaseGateway{
   }
  
   getSet() { 
+    console.log('get set!')
     if (this.data) {
       return Promise.resolve(this.data);
     }

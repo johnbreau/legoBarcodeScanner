@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { DatabaseGateway } from '../../providers/database-gateway/database-gateway';
 
 /**
  * Generated class for the UsersPage page.
@@ -13,9 +14,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'set-database',
   templateUrl: 'set-database.html',
 })
-export class SetDatabasePage {
+export class SetDatabasePage implements OnInit {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public dbGateway: DatabaseGateway) {
+  }
+
+  ngOnInit() {
+    this.dbGateway.getSet();
   }
 
   ionViewDidLoad() {
