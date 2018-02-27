@@ -5,13 +5,6 @@ import { Set } from '../setInterface';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DatabaseGateway } from '../../providers/database-gateway/database-gateway';
 
-/**
- * Generated class for the ReposPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'set-entry',
