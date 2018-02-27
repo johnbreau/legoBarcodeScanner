@@ -1,8 +1,9 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-// import { Set } from '../setInterface';
+import { Set } from '../setInterface';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { DatabaseGateway } from '../../providers/database-gateway/database-gateway';
 
 /**
  * Generated class for the ReposPage page.

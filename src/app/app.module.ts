@@ -9,6 +9,7 @@ import { SetDatabasePage } from '../pages/set-database/set-database';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { DatabaseGateway } from '../providers/database-gateway/database-gateway';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     BarcodeScanner,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DatabaseGateway
   ]
 })
 export class AppModule {}
