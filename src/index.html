@@ -4,6 +4,25 @@
   <meta charset="UTF-8">
   <title>Barcode Scanner</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  
+  <script src="https://s3.amazonaws.com/stitch-sdks/js/library/v3/stable/stitch.min.js"></script>
+  <script>
+    const clientPromise = stitch.StitchClientFactory.create('legobarcodescanner-eeybg');
+    clientPromise.then(client => {
+      const db = client.service('mongodb', 'mongodb-atlas').db('legoSetDb');
+      client.login().then(() =>
+        db.collection('sets').updateOne({owner_id: client.authedId()}, {$set:{number:42}}, {upsert:true})
+      ).then(()=>
+        db.collection('sets').find({owner_id: client.authedId()}).limit(100).execute()
+      ).then(docs => {
+        console.log("Found docs", docs)
+        console.log("[MongoDB Stitch] Connected to Stitch")
+      }).catch(err => {
+        console.error(err)
+      });
+    });
+  </script>
+
   <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">

@@ -1,3 +1,6 @@
+// mongodb+srv://legoSetAdmin:dbpassword71Xp!@legosetdb-uwnjt.mongodb.net/test
+
+
 import { Injectable } from '@angular/core';
 import { Headers } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
