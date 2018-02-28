@@ -5,7 +5,9 @@ export class Set {
         public setNumber: string,
         public setPieces?: number,
         public setYear?: string,
-        public setTheme?: string
+        public setTheme?: string,
+        public setLocation?: string,
+        public barcodeValue?: number,
       ) {  }
 
 }
