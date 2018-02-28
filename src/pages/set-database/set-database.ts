@@ -22,7 +22,7 @@ export class SetDatabasePage implements OnInit {
   }
 
   ngOnInit() {
-    this.dbGateway.getSet();
+    this.dbGateway.getCollection();
   }
 
   ionViewDidLoad() {

@@ -18,6 +18,7 @@ export class SetEntryPage implements OnInit, OnChanges {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private formBuilder: FormBuilder,
+              public dbGateway: DatabaseGateway,
               private barcodeScanner: BarcodeScanner) {
   }
 
@@ -37,16 +38,6 @@ export class SetEntryPage implements OnInit, OnChanges {
       storageLocation: '',
       disabled: [false]
     });
-    // Open indexDB Database...
-    this.DBOpenRequest = window.indexedDB.open('setDb', 1);
-
-    this.DBOpenRequest.onerror = function(event) {
-      console.log('Loading...');
-    };
-
-    this.DBOpenRequest.onsuccess = function(event) {
-      console.log('Database initialised');
-    };
   }
 
   ngOnChanges() {
@@ -59,6 +50,10 @@ export class SetEntryPage implements OnInit, OnChanges {
           objectStore.createIndex('setYear', 'setYear', { unique: false });
           objectStore.createIndex('setTheme', 'setTheme', { unique: false });
           objectStore.createIndex('storageLocation', 'storageLocation', { unique: false });
+  }
+
+  addSet(){
+    this.dbGateway.addSet();
   }
 
   ionViewDidLoad() {
