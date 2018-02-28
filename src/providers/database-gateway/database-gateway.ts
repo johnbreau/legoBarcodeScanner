@@ -33,7 +33,7 @@ export class DatabaseGateway{
     });
   }
  
-  addSet() { 
+  addSet(set) { 
     this.appId = 'legobarcodescanner-eeybg';
     console.log('get set!')
     const clientPromise = StitchClientFactory.create(this.appId);
@@ -44,12 +44,12 @@ export class DatabaseGateway{
       client.login().then(() =>
         db.collection('sets').insertOne({
           owner_id: client.authedId(),
-          setNumber:'4200',
-          setName: 'Galaxy Explorer',
-          setYear: '1989',
-          setPieces: 3000,
-          setLocation: 'Bin H',
-          barcodeValue: '15678883939'})
+          setNumber: set.setNumber,
+          setName: set.setName,
+          setYear: set.setYear,
+          setPieces: set.setPieces,
+          setLocation: set.setLocation,
+          barcodeValue: set.barcodeValue})
       ).then(()=>
         db.collection('sets').find({owner_id: client.authedId()}).limit(100).execute()
       ).then(docs => {

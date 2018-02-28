@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Set } from '../setInterface';
@@ -10,10 +10,11 @@ import { DatabaseGateway } from '../../providers/database-gateway/database-gatew
   selector: 'set-entry',
   templateUrl: 'set-entry.html',
 })
-export class SetEntryPage implements OnInit, OnChanges {
+export class SetEntryPage implements OnInit {
   public setForm: FormGroup;
-  public DBOpenRequest: any;
-  public db: any;
+  // public barcodeValue: any;
+  public displayFormSuccess = false;
+  public scanFailed = false;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -36,24 +37,24 @@ export class SetEntryPage implements OnInit, OnChanges {
       setYear: '',
       setTheme: '',
       storageLocation: '',
+      barcodeValue: '',
       disabled: [false]
     });
   }
 
-  ngOnChanges() {
-    this.db = this.DBOpenRequest.result;
-
-    const objectStore = this.db.createObjectStore('setDatabase', { keyPath: 'setName' });
-          objectStore.createIndex('setName', 'setName', { unique: false });
-          objectStore.createIndex('setNnumber', 'setNnumber', { unique: true });
-          objectStore.createIndex('setPieces', 'setPieces', { unique: false });
-          objectStore.createIndex('setYear', 'setYear', { unique: false });
-          objectStore.createIndex('setTheme', 'setTheme', { unique: false });
-          objectStore.createIndex('storageLocation', 'storageLocation', { unique: false });
-  }
-
-  addSet(){
-    this.dbGateway.addSet();
+  addSet() {
+    let data;
+    data = {setName: this.setForm.get('setName').value,
+            setNumber : this.setForm.get('setNumber').value,
+            setPieces : this.setForm.get('setPieces').value,
+            setYear : this.setForm.get('setYear').value,
+            setTheme : this.setForm.get('setTheme').value,
+            setLocation: this.setForm.get('storageLocation').value,
+            barcodeValue: this.setForm.get('barcodeValue').value,
+    }
+    this.dbGateway.addSet(data);
+    this.displayFormSuccess = true;
+    this.setForm.reset();
   }
 
   ionViewDidLoad() {
@@ -61,11 +62,11 @@ export class SetEntryPage implements OnInit, OnChanges {
   }
 
   scanButton() {
-    console.log('scan initiated');
     this.barcodeScanner.scan().then((barcodeData) => {
-      console.log(barcodeData);
+      // this.barcodeValue = barcodeData;
+      console.log(barcodeData)
      }, (err) => {
-         // An error occurred
+      this.scanFailed = true;
      });
   }
 }
