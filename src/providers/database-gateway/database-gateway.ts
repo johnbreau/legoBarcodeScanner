@@ -14,23 +14,37 @@ export class DatabaseGateway{
   constructor(public http: HttpClient) {
   }
 
-  getCollection() { 
-    this.appId = 'legobarcodescanner-eeybg';
-    console.log('get set!')
-    const clientPromise = StitchClientFactory.create(this.appId);
+  // getCollection() { 
+  //   this.appId = 'legobarcodescanner-eeybg';
+  //   console.log('get set!')
+  //   const clientPromise = StitchClientFactory.create(this.appId);
     
+  //   clientPromise.then(client => {
+  //     const db = client.service('mongodb', 'mongodb-atlas').db('legoSetDb');
+  //     const sets = db.collection('sets');
+  //     client.login().then(()=>
+  //       db.collection('sets').find({owner_id: client.authedId()}).limit(100).execute()
+  //     ).then(docs => {
+  //       console.log("Found docs", docs)
+  //       console.log("[MongoDB Stitch] Connected to Stitch")
+  //     }).catch(err => {
+  //       console.error(err)
+  //     });
+  //   });
+  // }
+
+
+    getCollection() {
+    const clientPromise = StitchClientFactory.create(this.appId);
     clientPromise.then(client => {
       const db = client.service('mongodb', 'mongodb-atlas').db('legoSetDb');
-      const sets = db.collection('sets');
-      client.login().then(()=>
-        db.collection('sets').find({owner_id: client.authedId()}).limit(100).execute()
-      ).then(docs => {
-        console.log("Found docs", docs)
-        console.log("[MongoDB Stitch] Connected to Stitch")
-      }).catch(err => {
-        console.error(err)
-      });
-    });
+      const setsCollection = db.collection('sets');
+          client.login().then(()=>
+      // CRUD operations:
+      db.collection.find({})
+    ).then(result => console.log('success: ', result))
+      .catch(e => console.log('error: ', e));
+    })
   }
  
   addSet(set) { 
