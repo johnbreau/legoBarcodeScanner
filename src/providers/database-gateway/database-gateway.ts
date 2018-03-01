@@ -41,7 +41,7 @@ export class DatabaseGateway{
       const setsCollection = db.collection('sets');
           client.login().then(()=>
       // CRUD operations:
-      db.collection.find({})
+      setsCollection.find({owner_id: client.authedId()})
     ).then(result => console.log('success: ', result))
       .catch(e => console.log('error: ', e));
     })
