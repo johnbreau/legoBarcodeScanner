@@ -1,10 +1,6 @@
-// Set up
 var express  = require('express');
 var app      = express();
 var mongoose = require('mongoose');
-var morgan = require('morgan');
-var bodyParser = require('body-parser');
-var cors = require('cors');
 var Schema = mongoose.Schema;
  
 mongoose.connect('mongodb://johnbreau:monlab71X@ds151508.mlab.com:51508/lego-barcode-scanner');
