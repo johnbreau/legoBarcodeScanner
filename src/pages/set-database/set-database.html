@@ -22,24 +22,18 @@
             <th>Set Year</th>
             <th>Set Theme</th>
             <th>Storage Location</th>
+            <th>Barcode Value</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Black Seas Barracuda</td>
-            <td>7456</td>
-            <td>1200</td>
-            <td>1989</td>
-            <td>Pirates</td>
-            <td>Bin H</td>
-          </tr>
-          <tr>
-            <td>Black Seas Barracuda</td>
-            <td>7456</td>
-            <td>1200</td>
-            <td>1989</td>
-            <td>Pirates</td>
-            <td>Bin H</td>
+          <tr  *ngFor="let set of dbGateway.sets">
+            <td>{{set.setName}}</td>
+            <td>{{set.setNumber}}</td>
+            <td>{{set.setPieces}}</td>
+            <td>{{set.setYear}}</td>
+            <td>{{set.setTheme}}</td>
+            <td>{{set.setLocation}}</td>
+            <td>{{set.barcodeValue}}</td>
           </tr>
         </tbody>
       </table>

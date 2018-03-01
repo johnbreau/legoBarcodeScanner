@@ -10,6 +10,7 @@
 </ion-header>
 
 <ion-content padding>
+  <div *ngIf="displayFormSuccess" class="successBanner">Set Successfully Submitted<span class="closeButton" (click)="closeBanner()">X</span></div>
   <div class="container">
     <div class="row px-5 mb-20">
         <button class="col- btn btn-outline-primary btn-block scan-button" (click)="scanButton()" type="submit">Barcode Scan</button>
@@ -79,7 +80,7 @@
         </div>
       </div>
       <div class="row px-3">
-        <button type="submit" class="btn btn-success btn-block" (click)="addSet()">Add Set</button>
+        <button type="submit" class="btn btn-success btn-block" (click)="dbGateway.getCollection()">Add Set</button>
       </div>
     </form>
   </div>

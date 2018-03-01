@@ -25,8 +25,4 @@ export class SetDatabasePage implements OnInit {
     this.dbGateway.getCollection();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SetDatabasePage');
-  }
-
 }

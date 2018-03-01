@@ -18,7 +18,29 @@ table {
     padding: 6px; 
     border: 1px solid #ccc; 
     text-align: left; 
-  }
+	}
+	
+.successBanner {
+	margin: 40px 0;
+	width: 100%;
+	text-align: left;
+	padding: 10px 10px 10px 70px;
+	color: white;
+	background-color: green;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+}
+
+.closeButton {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	color: white;
+	position: relative;
+	float: right;
+	margin-top: -2px;
+	margin-right: 40px;
+	cursor: pointer;
+}
 
 /* 
 Max width before this PARTICULAR table gets nasty
@@ -65,14 +87,10 @@ only screen and (max-width: 760px),
 	/*
 	Label the data
 	*/
-	td:nth-of-type(1):before { content: "First Name"; }
-	td:nth-of-type(2):before { content: "Last Name"; }
-	td:nth-of-type(3):before { content: "Job Title"; }
-	td:nth-of-type(4):before { content: "Favorite Color"; }
-	td:nth-of-type(5):before { content: "Wars of Trek?"; }
-	td:nth-of-type(6):before { content: "Porn Name"; }
-	td:nth-of-type(7):before { content: "Date of Birth"; }
-	td:nth-of-type(8):before { content: "Dream Vacation City"; }
-	td:nth-of-type(9):before { content: "GPA"; }
-	td:nth-of-type(10):before { content: "Arbitrary Data"; }
+	td:nth-of-type(1):before { content: "Set Name"; }
+	td:nth-of-type(2):before { content: "Set Number"; }
+	td:nth-of-type(3):before { content: "Number of Pieces"; }
+	td:nth-of-type(4):before { content: "Year"; }
+	td:nth-of-type(6):before { content: "Theme/Subtheme"; }
+	td:nth-of-type(7):before { content: "Storage Location"; }
 }

@@ -12,12 +12,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { DatabaseGateway } from '../providers/database-gateway/database-gateway';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { SuccessModalPage } from '../pages/success-modal/success-modal';
 
 @NgModule({
   declarations: [
     MyApp,
     SetEntryPage,
     SetDatabasePage,
+    SuccessModalPage,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     MyApp,
     SetDatabasePage,
     SetEntryPage,
+    SuccessModalPage,
   ],
   providers: [
     StatusBar,
