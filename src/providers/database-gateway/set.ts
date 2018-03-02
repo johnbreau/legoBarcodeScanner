@@ -1,5 +1,4 @@
 export class Set {
-
       constructor(
         public setName: string,
         public setNumber: string,

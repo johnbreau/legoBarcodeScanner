@@ -22,18 +22,16 @@
             <th>Set Year</th>
             <th>Set Theme</th>
             <th>Storage Location</th>
-            <th>Barcode Value</th>
           </tr>
         </thead>
         <tbody>
-          <tr  *ngFor="let set of dbGateway.sets">
+          <tr  *ngFor="let set of sets">
             <td>{{set.setName}}</td>
             <td>{{set.setNumber}}</td>
             <td>{{set.setPieces}}</td>
             <td>{{set.setYear}}</td>
             <td>{{set.setTheme}}</td>
             <td>{{set.setLocation}}</td>
-            <td>{{set.barcodeValue}}</td>
           </tr>
         </tbody>
       </table>

@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DatabaseGateway } from '../../providers/database-gateway/database-gateway';
-
-/**
- * Generated class for the UsersPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Set } from '../../providers/database-gateway/set';
 
 @IonicPage()
 @Component({
@@ -15,14 +9,17 @@ import { DatabaseGateway } from '../../providers/database-gateway/database-gatew
   templateUrl: 'set-database.html',
 })
 export class SetDatabasePage implements OnInit {
+  public sets: Set[]; 
 
-  constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public dbGateway: DatabaseGateway) {
+  constructor (public navCtrl: NavController, public navParams: NavParams, public dbGateway: DatabaseGateway) {
+      this.dbGateway.getCollection()
+        .subscribe(sets => {
+          this.sets = sets;
+        });
   }
 
   ngOnInit() {
-    this.dbGateway.getCollection();
+    // this.dbGateway.getCollection();
   }
 
 }

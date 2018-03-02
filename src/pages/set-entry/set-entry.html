@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="container">
-    <form [formGroup]="setForm" class="container">
+    <form [formGroup]="setForm" class="container" (submit)="addSet($event)" >
       <div class="row">
         <div class="form-group col-sm-12 col-md-6">
           <label for="setName">Set Name</label>
@@ -71,13 +71,13 @@
                 id="storageLocation">
         </div>
 
-        <div class="form-group col-sm-12 col-md-6">
+        <!-- <div class="form-group col-sm-12 col-md-6">
           <label for="barcodeValue">Barcode Value</label>
           <input type="text"
                 class="form-control"
                 formControlName="barcodeValue"
                 id="barcodeValue">
-        </div>
+        </div> -->
       </div>
       <div class="row px-3">
         <button type="submit" class="btn btn-success btn-block" (click)="addSet()">Add Set</button>
