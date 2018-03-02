@@ -18,6 +18,37 @@ export class SetDatabasePage implements OnInit {
         });
   }
 
+  deleteSet(id){
+    var sets = this.sets;
+    this.dbGateway.deleteSet(id)
+      .subscribe(data => {
+        if (data.n === 1) {
+          for (var i = 0; i < sets.length; i++){
+            if (sets[i]._id == id){
+              sets.splice(i, 1);
+            }
+          }
+        }
+      })
+    }
+
+  // To be finished - requires some UX work...
+  // updateSet(set){
+  //   var _set = {
+  //     _id: set._id,
+  //     setName: set.setName,
+  //     setNumber: set.setNumber,
+  //     setPieces: set.setPieces,
+  //     setYear: set.setYear,
+  //     setTheme: set.setTheme,
+  //     setLocation: set.setLocation
+  //   }
+  //   this.dbGateway.updateSet(_set)
+  //   .subscribe( data => {
+  //     console.log(data;)
+  //   }
+  // }
+
   ngOnInit() {
     // this.dbGateway.getCollection();
   }

@@ -63,7 +63,7 @@ export class SetEntryPage implements OnInit {
     this.dbGateway.addSet(newSet)
       .subscribe(set => {
         this.sets.push(set)
-         // this.displayFormSuccess = true;
+        this.displayFormSuccess = true;
         this.setForm.reset();
       })
   }

@@ -22,6 +22,7 @@
             <th>Set Year</th>
             <th>Set Theme</th>
             <th>Storage Location</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -32,6 +33,10 @@
             <td>{{set.setYear}}</td>
             <td>{{set.setTheme}}</td>
             <td>{{set.setLocation}}</td>
+            <td>
+              <input type="button" (click)="updateSet(set._id)" class="btn btn-success" value="Update Set">
+              <input type="button" (click)="deleteSet(set._id)" class="btn btn-danger" value="Delete Set">
+            </td>
           </tr>
         </tbody>
       </table>

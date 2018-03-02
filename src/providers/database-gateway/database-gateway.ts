@@ -25,4 +25,16 @@ export class DatabaseGateway {
       .map(res => res.json());
   }
 
+  deleteSet(id){
+    return this.http.delete('http://localhost:9000/api/set/' + id)
+      .map( res => res.json());
+  }
+
+  updateSet(set){
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.put('http://localhost:9000/api/set/' + set._id, JSON.stringify(set), {headers: headers})
+      .map(res => res.json());
+  }
+
 }

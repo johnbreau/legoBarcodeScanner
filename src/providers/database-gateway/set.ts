@@ -1,5 +1,6 @@
 export class Set {
       constructor(
+        public _id: string,
         public setName: string,
         public setNumber: string,
         public setPieces?: number,
