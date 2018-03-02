@@ -44,20 +44,20 @@ export class SetEntryPage implements OnInit {
     });
   }
 
-  // addSet() {
-  //   let data;
-  //   data = {setName: this.setForm.get('setName').value,
-  //           setNumber : this.setForm.get('setNumber').value,
-  //           setPieces : this.setForm.get('setPieces').value,
-  //           setYear : this.setForm.get('setYear').value,
-  //           setTheme : this.setForm.get('setTheme').value,
-  //           setLocation: this.setForm.get('storageLocation').value,
-  //           barcodeValue: this.setForm.get('barcodeValue').value,
-  //   }
-  //   this.dbGateway.addSet(data);
-  //   this.displayFormSuccess = true;
-  //   this.setForm.reset();
-  // }
+  addSet() {
+    let data;
+    data = {setName: this.setForm.get('setName').value,
+            setNumber : this.setForm.get('setNumber').value,
+            setPieces : this.setForm.get('setPieces').value,
+            setYear : this.setForm.get('setYear').value,
+            setTheme : this.setForm.get('setTheme').value,
+            setLocation: this.setForm.get('storageLocation').value,
+            barcodeValue: this.setForm.get('barcodeValue').value,
+    }
+    this.dbGateway.addSet(data);
+    this.displayFormSuccess = true;
+    this.setForm.reset();
+  }
 
   scanButton() {
     this.barcodeScanner.scan().then((barcodeData) => {
