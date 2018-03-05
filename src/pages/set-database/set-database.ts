@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DatabaseGateway } from '../../providers/database-gateway/database-gateway';
+import { BarcodeGateway } from '../../providers/barcode-gateway/barcode-gateway';
 import { Set } from '../../providers/database-gateway/set';
 
 @IonicPage()
@@ -10,12 +11,22 @@ import { Set } from '../../providers/database-gateway/set';
 })
 export class SetDatabasePage implements OnInit {
   public sets: Set[]; 
+  public barcode = '4002293401102';
+  public barcodeReturn: any;
 
-  constructor (public navCtrl: NavController, public navParams: NavParams, public dbGateway: DatabaseGateway) {
+  constructor (public navCtrl: NavController,
+               public navParams: NavParams,
+               public dbGateway: DatabaseGateway,
+               public barcodeGateway: BarcodeGateway,) {
       this.dbGateway.getCollection()
         .subscribe(sets => {
           this.sets = sets;
         });
+      this.barcodeGateway.getBarcodeData(this.barcode)
+      .subscribe(barcodeObject => {
+        this.barcodeReturn = barcodeObject;
+        console.log(this.barcodeReturn);
+      });
   }
 
   deleteSet(id){

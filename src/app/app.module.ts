@@ -13,6 +13,7 @@ import { DatabaseGateway } from '../providers/database-gateway/database-gateway'
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { SuccessModalPage } from '../pages/success-modal/success-modal';
+import { BarcodeGateway } from '../providers/barcode-gateway/barcode-gateway';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SuccessModalPage } from '../pages/success-modal/success-modal';
     SplashScreen,
     BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DatabaseGateway
+    DatabaseGateway,
+    BarcodeGateway,
   ]
 })
 export class AppModule {}
