@@ -11,7 +11,7 @@ import { Set } from '../../providers/database-gateway/set';
 })
 export class SetDatabasePage implements OnInit {
   public sets: Set[]; 
-  public barcode = '4002293401102';
+  public barcode = '6009705662678';
   public barcodeReturn: any;
 
   constructor (public navCtrl: NavController,
@@ -24,8 +24,8 @@ export class SetDatabasePage implements OnInit {
         });
       this.barcodeGateway.getBarcodeData(this.barcode)
       .subscribe(barcodeObject => {
-        this.barcodeReturn = barcodeObject;
-        console.log(this.barcodeReturn);
+        this.barcodeReturn = barcodeObject[0];
+        console.log(this.barcodeReturn.items[0]);
       });
   }
 

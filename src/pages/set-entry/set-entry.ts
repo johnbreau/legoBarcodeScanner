@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DatabaseGateway } from '../../providers/database-gateway/database-gateway';
+import { BarcodeGateway } from '../../providers/barcode-gateway/barcode-gateway';
 import { ModalController } from 'ionic-angular';
 import { SuccessModalPage } from '../success-modal/success-modal';
 import { Set } from '../../providers/database-gateway/set';
@@ -13,8 +14,10 @@ import { Set } from '../../providers/database-gateway/set';
   templateUrl: 'set-entry.html',
 })
 export class SetEntryPage implements OnInit {
+  public scanData : {};
+  public options :BarcodeScannerOptions;
   public setForm: FormGroup;
-  // public barcodeValue: any;
+  public barcodeValue: any;
   public scanFailed = false;
   public displayFormSuccess = false;
   public sets: Set[];
@@ -23,6 +26,7 @@ export class SetEntryPage implements OnInit {
               public navParams: NavParams,
               private formBuilder: FormBuilder,
               public dbGateway: DatabaseGateway,
+              public barcodeGateway: BarcodeGateway,
               public modalCtrl: ModalController,
               private barcodeScanner: BarcodeScanner) {
       this.dbGateway.getCollection()
@@ -58,7 +62,7 @@ export class SetEntryPage implements OnInit {
             setYear : this.setForm.get('setYear').value,
             setTheme : this.setForm.get('setTheme').value,
             setLocation: this.setForm.get('storageLocation').value,
-            // barcodeValue: this.setForm.get('barcodeValue').value,
+            // barcodeValue: this.barcodeGateway.getBarcodeData(this.barcodeValue),
     }
     this.dbGateway.addSet(newSet)
       .subscribe(set => {
@@ -70,8 +74,13 @@ export class SetEntryPage implements OnInit {
 
   scanButton() {
     this.barcodeScanner.scan().then((barcodeData) => {
-      // this.barcodeValue = barcodeData;
-      console.log(barcodeData)
+      this.barcodeValue = barcodeData;
+      console.log('barcode value', this.barcodeValue);
+      this.barcodeGateway.getBarcodeData(this.barcodeValue)
+      .map(res => res.json())
+      .subscribe(set => {
+          console.log(set);
+      })
      }, (err) => {
       this.scanFailed = true;
      });
