@@ -21,7 +21,6 @@ export class SetEntryPage implements OnInit {
   public options :BarcodeScannerOptions;
   public setForm: FormGroup;
   public barcodeScannerValue: string;
-  public dummyValue: string;
   public scanFailed = false;
   public displayFormSuccess = false;
   public fromUPCDatabase: Observable<any>;
@@ -42,7 +41,6 @@ export class SetEntryPage implements OnInit {
   }
 
   ngOnInit() {
-    this.dummyValue = 'dummyValue';
     this.setForm = this.formBuilder.group({
       setName: [
         '',
@@ -101,6 +99,14 @@ export class SetEntryPage implements OnInit {
       .subscribe(barcodeObject => {
         this.barcodeReturn = barcodeObject;
         console.log('se bcr', this.barcodeReturn);
+        this.setForm.setValue({
+          setName: barcodeObject.items[0].title,
+          setNumber : barcodeObject.items[0].ean,
+          setPieces : 1234,
+          setYear : barcodeObject.items[0].brand,
+          setTheme : barcodeObject.items[0].model,
+          setLocation: barcodeObject.items[0].title,
+        });
       });
     });
   }
