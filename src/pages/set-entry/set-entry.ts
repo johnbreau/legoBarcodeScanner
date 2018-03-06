@@ -9,6 +9,7 @@ import { SuccessModalPage } from '../success-modal/success-modal';
 import { Set } from '../../providers/database-gateway/set';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/combineLatest';
+import { combineLatest } from 'rxjs/observable/combineLatest';
 
 @IonicPage()
 @Component({
@@ -19,8 +20,8 @@ export class SetEntryPage implements OnInit {
   public scanData : {};
   public options :BarcodeScannerOptions;
   public setForm: FormGroup;
-  public barcodeScannerValue: {};
-  public dummyValue: any;
+  public barcodeScannerValue: string;
+  public dummyValue: string;
   public scanFailed = false;
   public displayFormSuccess = false;
   public fromUPCDatabase: Observable<any>;
@@ -41,6 +42,7 @@ export class SetEntryPage implements OnInit {
   }
 
   ngOnInit() {
+    this.dummyValue = 'dummyValue';
     this.setForm = this.formBuilder.group({
       setName: [
         '',
@@ -80,39 +82,27 @@ export class SetEntryPage implements OnInit {
   // scanButton() {
   //   this.barcodeScanner.scan()
   //     .then((barcodeData) => {
-  //     this.barcodeScannerValue = barcodeData;
+  //     this.barcodeScannerValue = barcodeData.text;
   //     console.log('barcode value', this.barcodeScannerValue);
-  //     this.barcodeGateway.getBarcodeData(this.barcodeScannerValue)
-  //     .map(res => res.json())
-  //     .subscribe(set => {
-  //         console.log(set);
-  //     })
+  //     // this.barcodeGateway.getBarcodeData(this.barcodeScannerValue)
+  //     // .map(res => res.json())
+  //     // .subscribe(set => {
+  //     //     console.log(set);
+  //     // })
   //    }, (err) => {
   //     this.scanFailed = true;
   //    });
   // }
 
   scanButton(){
-    this.barcodeScanner.scan().then((barcodeData) => {
-      this.barcodeScannerValue = barcodeData
+    this.barcodeScanner.scan()
+      .then((barcodeData) => {
+        this.barcodeGateway.getBarcodeData(barcodeData.text)
+      .subscribe(barcodeObject => {
+        this.barcodeReturn = barcodeObject;
+        console.log('se bcr', this.barcodeReturn);
+      });
     });
-    this.barcodeScanner.scan().then((barcodeData) => {
-      console.log('scanned UPC', barcodeData);
-      this.barcodeScannerValue = barcodeData;
-      console.log('value', this.barcodeScannerValue)
-     }, (err) => {
-      console.log('a scannning error occurred');
-     });
-    this.fromUPCDatabase = Observable.combineLatest(
-      this.barcodeScannerValue,
-      this.dummyValue,
-      (scannerValue, dummyValue) => {
-        this.barcodeGateway.getBarcodeData(scannerValue)
-        .subscribe(barcodeObject => {
-          this.barcodeReturn = barcodeObject;
-        });
-      }
-    );
   }
 
   openModal() {

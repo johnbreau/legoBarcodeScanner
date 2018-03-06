@@ -25,7 +25,7 @@ export class SetDatabasePage implements OnInit {
       this.barcodeGateway.getBarcodeData(this.barcode)
       .subscribe(barcodeObject => {
         this.barcodeReturn = barcodeObject;
-        console.log(this.barcodeReturn);
+        console.log('db bcr', this.barcodeReturn);
       });
   }
 
