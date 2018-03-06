@@ -24,8 +24,8 @@ export class SetDatabasePage implements OnInit {
         });
       this.barcodeGateway.getBarcodeData(this.barcode)
       .subscribe(barcodeObject => {
-        this.barcodeReturn = barcodeObject[0];
-        console.log(this.barcodeReturn.items[0]);
+        this.barcodeReturn = barcodeObject;
+        console.log(this.barcodeReturn);
       });
   }
 
