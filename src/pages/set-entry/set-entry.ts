@@ -103,16 +103,16 @@ export class SetEntryPage implements OnInit {
      }, (err) => {
       console.log('a scannning error occurred');
      });
-    // this.fromUPCDatabase = Observable.combineLatest(
-    //   this.barcodeScannerValue,
-    //   this.dummyValue,
-    //   (scannerValue, dummyValue) => {
-    //     this.barcodeGateway.getBarcodeData(scannerValue)
-    //     .subscribe(barcodeObject => {
-    //       this.barcodeReturn = barcodeObject;
-    //     });
-    //   }
-    // );
+    this.fromUPCDatabase = Observable.combineLatest(
+      this.barcodeScannerValue,
+      this.dummyValue,
+      (scannerValue, dummyValue) => {
+        this.barcodeGateway.getBarcodeData(scannerValue)
+        .subscribe(barcodeObject => {
+          this.barcodeReturn = barcodeObject;
+        });
+      }
+    );
   }
 
   openModal() {
