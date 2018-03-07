@@ -8,8 +8,6 @@ import { ModalController } from 'ionic-angular';
 import { SuccessModalPage } from '../success-modal/success-modal';
 import { Set } from '../../providers/database-gateway/set';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/combineLatest';
-import { combineLatest } from 'rxjs/observable/combineLatest';
 
 @IonicPage()
 @Component({
@@ -77,21 +75,6 @@ export class SetEntryPage implements OnInit {
       })
   }
 
-  // scanButton() {
-  //   this.barcodeScanner.scan()
-  //     .then((barcodeData) => {
-  //     this.barcodeScannerValue = barcodeData.text;
-  //     console.log('barcode value', this.barcodeScannerValue);
-  //     // this.barcodeGateway.getBarcodeData(this.barcodeScannerValue)
-  //     // .map(res => res.json())
-  //     // .subscribe(set => {
-  //     //     console.log(set);
-  //     // })
-  //    }, (err) => {
-  //     this.scanFailed = true;
-  //    });
-  // }
-
   scanButton(){
     this.barcodeScanner.scan()
       .then((barcodeData) => {
@@ -99,14 +82,12 @@ export class SetEntryPage implements OnInit {
       .subscribe(barcodeObject => {
         this.barcodeReturn = barcodeObject;
         console.log('se bcr', this.barcodeReturn);
-        this.setForm.setValue({
-          setName: barcodeObject.items[0].title,
-          setNumber : barcodeObject.items[0].ean,
-          setPieces : 1234,
-          setYear : barcodeObject.items[0].brand,
-          setTheme : barcodeObject.items[0].model,
-          setLocation: barcodeObject.items[0].title,
-        });
+        this.setForm.controls['setName'].setValue(barcodeObject.items[0].title);
+        this.setForm.controls['setNumber'].setValue(barcodeObject.items[0].ean);
+        this.setForm.controls['setPieces'].setValue(barcodeObject.items[0].title);
+        this.setForm.controls['setYear'].setValue(barcodeObject.items[0].title);
+        this.setForm.controls['setTheme'].setValue(barcodeObject.items[0].title);
+        this.setForm.controls['setLocation'].setValue(barcodeObject.items[0].title);
       });
     });
   }
