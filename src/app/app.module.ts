@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-import { NgxSoapModule } from 'ngx-soap';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
@@ -29,7 +28,6 @@ import { BricksetGateway } from '../providers/brickset-gateway/brickset-gateway'
     IonicModule.forRoot(MyApp),
     HttpModule,
     HttpClientModule,
-    NgxSoapModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
