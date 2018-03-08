@@ -34,11 +34,8 @@ export class BricksetGateway {
     xmlhttp.onreadystatechange =  () => {
         if (xmlhttp.readyState == 4) {
             if (xmlhttp.status == 200) {
-                // let xml = xmlhttp.responseXML;
-                // let response_number = parseInt(xml.getElementsByTagName("li")[0].childNodes[0].nodeValue); //Here I'm getting the value contained by the <return> node
-                // console.log(response_number); //I'm printing my result square number
-                console.log(xmlhttp.response);
-                console.log(xmlhttp.responseXML);
+                var jsonText = JSON.stringify(this.xmlToJson(xmlhttp.responseXML));
+                console.log(jsonText);
             }
         }
     }
@@ -48,4 +45,39 @@ export class BricksetGateway {
     xmlhttp.send(sr);
   }
 
-}
+  xmlToJson(xml) { 
+    // Create the return object
+    var obj = {};
+    if (xml.nodeType == 1) { // element
+      // do attributes
+      if (xml.attributes.length > 0) {
+      obj["@attributes"] = {};
+        for (var j = 0; j < xml.attributes.length; j++) {
+          var attribute = xml.attributes.item(j);
+          obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+        }
+      }
+    } else if (xml.nodeType == 3) { // text
+      obj = xml.nodeValue;
+    }
+    // do children
+    if (xml.hasChildNodes()) {
+      for(var i = 0; i < xml.childNodes.length; i++) {
+        var item = xml.childNodes.item(i);
+        var nodeName = item.nodeName;
+        if (typeof(obj[nodeName]) == "undefined") {
+          obj[nodeName] = this.xmlToJson(item);
+        } else {
+          if (typeof(obj[nodeName].push) == "undefined") {
+            var old = obj[nodeName];
+            obj[nodeName] = [];
+            obj[nodeName].push(old);
+          }
+          obj[nodeName].push(this.xmlToJson(item));
+          }
+        }
+      }
+      return obj;
+    };
+    
+  }
