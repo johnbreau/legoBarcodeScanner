@@ -7,6 +7,7 @@ export class BricksetGateway {
   private apiKey: string;
   private userHash: string;
   private setID: string;
+  private theme: string;
 
   constructor(public http: HttpClient) {
     console.log('Hello BricksetGateway Provider');
@@ -16,20 +17,44 @@ export class BricksetGateway {
     this.apiKey = 'PEVh-NM7r-No3K';
     this.userHash = 'johnbreau';
     this.setID = '6391'
+    this.theme = 'Technic';
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.open('POST', 'https://brickset.com/api/v2.asmx?WSDL', true);
 
-    let sr =
-        `<?xml version="1.0" encoding="utf-8"?>
-        <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-          <soap:Body>
-            <getSet xmlns="https://brickset.com/api/">
+    // let sr =
+    //     `<?xml version="1.0" encoding="utf-8"?>
+    //     <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    //       <soap:Body>
+    //         <getSet xmlns="https://brickset.com/api/">
+    //           <apiKey>` + this.apiKey + `</apiKey>
+    //           <userHash>` + this.userHash + `</userHash>
+    //           <SetID>` + this.setID + `</SetID>
+    //         </getSet>
+    //       </soap:Body>
+    //     </soap:Envelope>`;
+
+        // To get all sets...
+        let sr = 
+          `<?xml version="1.0" encoding="utf-8"?>
+          <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+            <soap:Body>
+            <getSets xmlns="https://brickset.com/api/">
               <apiKey>` + this.apiKey + `</apiKey>
               <userHash>` + this.userHash + `</userHash>
-              <SetID>` + this.setID + `</SetID>
-            </getSet>
-          </soap:Body>
-        </soap:Envelope>`;
+              <query>` + '' +`</query>
+              <theme>` + this.theme + `</theme>
+              <subtheme>` + '' +`</subtheme>
+              <setNumber>` + '' +`</setNumber>
+              <year>` + '' +`</year>
+              <owned>` + '' +`</owned>
+              <wanted>` + '' +`</wanted>
+              <orderBy>` + '' +`</orderBy>
+              <pageSize>` + '' +`</pageSize>
+              <pageNumber>` + '' +`</pageNumber>
+              <userName>` + '' +`</userName>
+            </getSets>
+            </soap:Body>
+          </soap:Envelope>`;
 
     xmlhttp.onreadystatechange =  () => {
         if (xmlhttp.readyState == 4) {
