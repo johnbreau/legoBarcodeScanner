@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DatabaseGateway } from '../../providers/database-gateway/database-gateway';
 import { BarcodeGateway } from '../../providers/barcode-gateway/barcode-gateway';
+import { BricksetGateway } from '../../providers/brickset-gateway/brickset-gateway';
 import { ModalController } from 'ionic-angular';
 import { SuccessModalPage } from '../success-modal/success-modal';
 import { Set } from '../../providers/database-gateway/set';
@@ -30,6 +31,7 @@ export class SetEntryPage implements OnInit {
               private formBuilder: FormBuilder,
               public dbGateway: DatabaseGateway,
               public barcodeGateway: BarcodeGateway,
+              public bricksetGateway: BricksetGateway,
               public modalCtrl: ModalController,
               private barcodeScanner: BarcodeScanner) {
       this.dbGateway.getCollection()
@@ -73,6 +75,11 @@ export class SetEntryPage implements OnInit {
         this.displayFormSuccess = true;
         this.setForm.reset();
       })
+  }
+
+  bricksetTester(){
+    this.bricksetGateway.bricketGetSet();
+    console.log('bs test');
   }
 
   scanButton(){

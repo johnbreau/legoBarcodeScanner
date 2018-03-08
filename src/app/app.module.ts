@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { NgxSoapModule } from 'ngx-soap';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
@@ -14,6 +15,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { SuccessModalPage } from '../pages/success-modal/success-modal';
 import { BarcodeGateway } from '../providers/barcode-gateway/barcode-gateway';
+import { BricksetGateway } from '../providers/brickset-gateway/brickset-gateway';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { BarcodeGateway } from '../providers/barcode-gateway/barcode-gateway';
     IonicModule.forRoot(MyApp),
     HttpModule,
     HttpClientModule,
+    NgxSoapModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,6 +45,7 @@ import { BarcodeGateway } from '../providers/barcode-gateway/barcode-gateway';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatabaseGateway,
     BarcodeGateway,
+    BricksetGateway,
   ]
 })
 export class AppModule {}

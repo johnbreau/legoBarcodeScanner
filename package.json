@@ -46,9 +46,11 @@
     "@ionic/app-scripts": "3.1.8",
     "body-parser": "^1.18.2",
     "core-js": "^2.5.3",
+    "madlib-xml-objectifier": "^0.1.10",
     "mongodb": "^3.0.3",
     "mongodb-stitch": "^3.0.5",
     "mongoose": "^5.0.7",
+    "ngx-soap": "^0.2.2-beta4",
     "typescript": "2.4.2"
   },
   "description": "An App for Scanning Lego Barcodes",
