@@ -7,7 +7,8 @@ export class BricksetGateway {
   private apiKey: string;
   private userHash: string;
   private setID: string;
-  private theme: string;
+  private year: string;
+  private pageSize: string;
 
   constructor(public http: HttpClient) {
     console.log('Hello BricksetGateway Provider');
@@ -17,7 +18,8 @@ export class BricksetGateway {
     this.apiKey = 'PEVh-NM7r-No3K';
     this.userHash = 'johnbreau';
     this.setID = '6391'
-    this.theme = 'Technic';
+    this.year = '1995';
+    this.pageSize = '840';
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.open('POST', 'https://brickset.com/api/v2.asmx?WSDL', true);
 
@@ -42,14 +44,14 @@ export class BricksetGateway {
               <apiKey>` + this.apiKey + `</apiKey>
               <userHash>` + this.userHash + `</userHash>
               <query>` + '' +`</query>
-              <theme>` + this.theme + `</theme>
+              <theme>` + '' + `</theme>
               <subtheme>` + '' +`</subtheme>
               <setNumber>` + '' +`</setNumber>
-              <year>` + '' +`</year>
+              <year>` + this.year  +`</year>
               <owned>` + '' +`</owned>
               <wanted>` + '' +`</wanted>
               <orderBy>` + '' +`</orderBy>
-              <pageSize>` + '' +`</pageSize>
+              <pageSize>` + this.pageSize +`</pageSize>
               <pageNumber>` + '' +`</pageNumber>
               <userName>` + '' +`</userName>
             </getSets>
