@@ -18,7 +18,7 @@ export class BricksetGateway {
     this.apiKey = 'PEVh-NM7r-No3K';
     this.userHash = 'johnbreau';
     this.setID = '6391'
-    this.year = '1995';
+    this.year = '1977';
     this.pageSize = '840';
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.open('POST', 'https://brickset.com/api/v2.asmx?WSDL', true);
