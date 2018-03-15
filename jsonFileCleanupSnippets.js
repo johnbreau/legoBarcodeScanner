@@ -3,6 +3,10 @@ REGEX FOR DB FILES...
 \n{"setID"
 
 
+REGEX TO FIND AND REMOVE SETID...
+\{("setID":")[0-9]+[0-9](",)
+
+
 IMPORT FOR MLAB (make sure to change file name and execute command from base folder)...
 
 mongoimport -h ds151508.mlab.com:51508 -d lego-barcode-scanner -c allSetDatabase -u johnbreau -p monlab71X --file /Users/johnbreau/github/legoBarcodeScanner/setDatabase/1977.json --jsonArray
