@@ -1,6 +1,6 @@
 REGEX FOR DB FILES...
 \{("setID")
-*\n{"setID"
+\n{"setID"
 
 
 REGEX TO FIND AND REMOVE SETID...
