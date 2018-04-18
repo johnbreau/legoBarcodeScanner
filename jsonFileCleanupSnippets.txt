@@ -40,16 +40,11 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-this works for keys "released" through "wantedByTotal"
+this works for keys "released" through "availability"
 
 ("released":")[a-z]+[a-z](","owned":")[a-z]+[a-z](","wanted":")[a-z]+[a-z](","qtyOwned":")\d{1,6}(","userNotes":)\{}(,"ACMDataCount":")\d{1,6}(","ownedByTotal":")\d{1,6}(","wantedByTotal":")\d{1,6}(")
 (,"UKRetailPrice":)(\{}|(")\d{1,6}?\.\d{1,6}("))(,"USRetailPrice":)(\{}|(")\d{1,6}?\.\d{1,6}("))(,"CARetailPrice":)(\{}|(")\d{1,6}?\.\d{1,6}("))(,"EURetailPrice":)(\{}|(")\d{1,6}?\.\d{1,6}("))
-(,"USDateAddedToSAH":)\{}(,"USDateRemovedFromSAH":)\{}(,"rating":")(\d\.\d+|\d)(")(","reviewCount":")\d{1,3}
-("packagingType":")([a-zA-Z]+[a-zA-Z]|\{(Not specified)\})(",)
-
-
-("availability":")([a-zA-Z]+[a-zA-Z]|\{(Not specified)\}|(Retail))(",)
-
+(,"USDateAddedToSAH":)\{}(,"USDateRemovedFromSAH":)\{}(,"rating":")(\d\.\d+|\d)(")(","reviewCount":")\d{1,3}("packagingType":")([a-zA-Z]+[a-zA-Z]|\{(Not specified)\})(",)("availability":")([a-zA-Z]+[a-zA-Z]|\{(Not specified)\}|(Retail))(",)
 
 
 this will find dollar amount with decimal...
@@ -58,3 +53,25 @@ this will find dollar amount with decimal...
 
 this will find key/value pairs with no dollar amount...
 ("USRetailPrice":)\{}
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+New cleanup work...
+
+"instructionsCount":"0","additionalImageCount":"0","ageMin":{},"ageMax":{},"height":{},"width":{},"depth":{},"weight":{},"category":"Normal","userRating":"0",
+
+("packagingType":")([a-zA-Z]+[a-zA-Z]|\{(Not specified)\})
+
+(,"instructionsCount":")\d{1,6}(","additionalImageCount":")\d{1,6}(","ageMin":)(\{}|\d{1,6})(,"ageMax":)(\{}|\d{1,6})(,"height":)\{}(,"width":)\{}(,"depth":)\{}(,"weight":)\{}(,"category":")[a-zA-Z]+[a-zA-Z](")
+
+(,"lastUpdated":")\b[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z\b(")
+
+(,"lastUpdated":")[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}(")
+
+("USDateRemovedFromSAH":")[0-9]{4}-[0-9]{2}-[0-9]{2}(",)
+
+
+
+"USDateAddedToSAH":"2007-10-24"
