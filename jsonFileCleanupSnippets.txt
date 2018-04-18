@@ -22,7 +22,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 
 
-
+(","availability":")[a-zA-Z]+[a-zA-Z](",)
 
 
 {("released":")[a-z]+[a-z](",)
@@ -42,4 +42,19 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 this works for keys "released" through "wantedByTotal"
 
-("released":")[a-z]+[a-z](","owned":")[a-z]+[a-z](","wanted":")[a-z]+[a-z](","qtyOwned":")\d{1,6}(","userNotes":)\{}(,"ACMDataCount":")\d{1,6}(","ownedByTotal":")\d{1,6}(","wantedByTotal":")\d{1,6}
+("released":")[a-z]+[a-z](","owned":")[a-z]+[a-z](","wanted":")[a-z]+[a-z](","qtyOwned":")\d{1,6}(","userNotes":)\{}(,"ACMDataCount":")\d{1,6}(","ownedByTotal":")\d{1,6}(","wantedByTotal":")\d{1,6}(")
+(,"UKRetailPrice":)(\{}|(")\d{1,6}?\.\d{1,6}("))(,"USRetailPrice":)(\{}|(")\d{1,6}?\.\d{1,6}("))(,"CARetailPrice":)(\{}|(")\d{1,6}?\.\d{1,6}("))(,"EURetailPrice":)(\{}|(")\d{1,6}?\.\d{1,6}("))
+(,"USDateAddedToSAH":)\{}(,"USDateRemovedFromSAH":)\{}(,"rating":")(\d\.\d+|\d)(")(","reviewCount":")\d{1,3}
+("packagingType":")([a-zA-Z]+[a-zA-Z]|\{(Not specified)\})(",)
+
+
+("availability":")([a-zA-Z]+[a-zA-Z]|\{(Not specified)\}|(Retail))(",)
+
+
+
+this will find dollar amount with decimal...
+("USRetailPrice":)(")\d{1,6}?\.\d{1,6}
+
+
+this will find key/value pairs with no dollar amount...
+("USRetailPrice":)\{}
