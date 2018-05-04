@@ -50,6 +50,8 @@ this works for keys "released" through "availability"
 this will find dollar amount with decimal...
 ("USRetailPrice":)(")\d{1,6}?\.\d{1,6}
 
+Tester
+
 
 this will find key/value pairs with no dollar amount...
 ("USRetailPrice":)\{}
