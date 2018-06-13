@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 
 import { SetEntryPage } from '../pages/set-entry/set-entry';
 import { SetDatabasePage } from '../pages/set-database/set-database';
+import { QueryAllSetsPage } from '../pages/query-all-sets/query-all-sets';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -15,12 +16,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { SuccessModalPage } from '../pages/success-modal/success-modal';
 import { BarcodeGateway } from '../providers/barcode-gateway/barcode-gateway';
 import { BricksetGateway } from '../providers/brickset-gateway/brickset-gateway';
+import { AllSetsDbGateway } from '../providers/all-sets-db-gateway/all-sets-db-gateway';
 
 @NgModule({
   declarations: [
     MyApp,
     SetEntryPage,
     SetDatabasePage,
+    QueryAllSetsPage,
     SuccessModalPage,
   ],
   imports: [
@@ -35,6 +38,7 @@ import { BricksetGateway } from '../providers/brickset-gateway/brickset-gateway'
     SetDatabasePage,
     SetEntryPage,
     SuccessModalPage,
+    QueryAllSetsPage,
   ],
   providers: [
     StatusBar,
@@ -44,6 +48,7 @@ import { BricksetGateway } from '../providers/brickset-gateway/brickset-gateway'
     DatabaseGateway,
     BarcodeGateway,
     BricksetGateway,
+    AllSetsDbGateway,
   ]
 })
 export class AppModule {}

@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon> 
+    </button>
+    <ion-title>
+      Collection...
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="container-fluid" *ngFor="let set of sets">
+    <ul>
+      <li>{{set.name}} - {{set.number}} - {{set.year}}</li>
+    </ul>
+  </div>
+</ion-content>
