@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe } from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AllSetsDbGateway } from '../../providers/all-sets-db-gateway/all-sets-db-gateway';
-import { Set } from '../../providers/database-gateway/set';
+// import { Set } from '../../providers/database-gateway/set';
 
 @IonicPage()
 @Component({
@@ -9,19 +12,42 @@ import { Set } from '../../providers/database-gateway/set';
   templateUrl: 'query-all-sets.html',
 })
 export class QueryAllSetsPage implements OnInit {
-  public sets: Set[]; 
+  public displaySet: any;
+  public setData: any;
+  public setFinder: FormGroup;
+  public showSection = false;
 
   constructor (public navCtrl: NavController,
+               private formBuilder: FormBuilder,
                public navParams: NavParams,
                public allSetsGateway: AllSetsDbGateway) {
-      this.allSetsGateway.getAllSets()
-        .subscribe(sets => {
-          this.sets = sets;
-        });
   }
 
   ngOnInit() {
-    // this.dbGateway.getCollection();
+    this.setFinder = this.formBuilder.group({
+            setNumber: [
+              '',
+              Validators.compose([Validators.required])
+            ],
+            disabled: [false]
+          });
+  }
+
+  getAllSetsSet(event){
+    let numberOfSet;
+        numberOfSet = this.setFinder.get('setNumber').value
+    this.allSetsGateway.getOneSet(numberOfSet)
+      .subscribe(set => {
+        this.setData = (JSON.stringify(set));
+        this.displaySet = JSON.parse(this.setData);
+        console.log(this.displaySet);
+        this.showSection = true;
+      })
   }
 
 }
+
+// this.observableJson().subscribe(res => {
+//   this.propertyData = res;
+//   console.log(JSON.stringify(this.propertyData));
+//  });
