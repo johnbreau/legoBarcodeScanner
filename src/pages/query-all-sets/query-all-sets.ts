@@ -1,5 +1,4 @@
-import { Component, OnInit, Pipe } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/observable/of';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';

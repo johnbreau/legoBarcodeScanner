@@ -13,19 +13,21 @@ export class SetDatabasePage implements OnInit {
   public sets: Set[]; 
   public barcode = '6009705662678';
   public barcodeReturn: any;
+  public displaySet: any;
+  public setData: any;
 
   constructor (public navCtrl: NavController,
-               public navParams: NavParams,
-               public dbGateway: DatabaseGateway,
-               public barcodeGateway: BarcodeGateway,) {
+    public navParams: NavParams,
+    public dbGateway: DatabaseGateway,
+    public barcodeGateway: BarcodeGateway,) {
       this.dbGateway.getCollection()
-        .subscribe(sets => {
-          this.sets = sets;
-        });
+      .subscribe(sets => {
+        this.setData = (JSON.stringify(sets));
+        this.displaySet = JSON.parse(this.setData);
+      });
       this.barcodeGateway.getBarcodeData(this.barcode)
       .subscribe(barcodeObject => {
         this.barcodeReturn = barcodeObject;
-        console.log('db bcr', this.barcodeReturn);
       });
   }
 
