@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DatabaseGateway } from '../../providers/database-gateway/database-gateway';
 import { BarcodeGateway } from '../../providers/barcode-gateway/barcode-gateway';
+import { AllSetsDbGateway } from '../../providers/all-sets-db-gateway/all-sets-db-gateway';
 import { BricksetGateway } from '../../providers/brickset-gateway/brickset-gateway';
 import { ModalController } from 'ionic-angular';
 import { SuccessModalPage } from '../success-modal/success-modal';
@@ -19,12 +20,16 @@ export class SetEntryPage implements OnInit {
   public scanData : {};
   public options :BarcodeScannerOptions;
   public setForm: FormGroup;
+  public findSetForm: FormGroup;
   public barcodeScannerValue: string;
   public scanFailed = false;
   public displayFormSuccess = false;
   public fromUPCDatabase: Observable<any>;
   public barcodeReturn: any;
   public sets: Set[];
+  public displaySet: any;
+  public setData: any;
+  public showSection = false;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -32,12 +37,9 @@ export class SetEntryPage implements OnInit {
               public dbGateway: DatabaseGateway,
               public barcodeGateway: BarcodeGateway,
               public bricksetGateway: BricksetGateway,
+              public allSetsGateway: AllSetsDbGateway,
               public modalCtrl: ModalController,
               private barcodeScanner: BarcodeScanner) {
-      this.dbGateway.getCollection()
-      .subscribe(sets => {
-        this.sets = sets;
-      });
   }
 
   ngOnInit() {
@@ -57,6 +59,28 @@ export class SetEntryPage implements OnInit {
       // barcodeValue: this.barcodeValue,
       disabled: [false]
     });
+
+    this.findSetForm = this.formBuilder.group({
+      findSetFormNumber: [
+        '',
+        Validators.compose([Validators.required])
+      ]
+    });
+  }
+
+  findSetByNumber() {
+    let inputNumber;
+    inputNumber = {
+      findSetFormNumber: this.findSetForm.get('findSetFormNumber').value,
+    }
+    this.allSetsGateway.getOneSet(inputNumber.findSetFormNumber)
+      .subscribe(set => {
+        this.setForm.controls['setName'].setValue(set.name);
+        this.setForm.controls['setNumber'].setValue(set.number);
+        this.setForm.controls['setPieces'].setValue(set.pieces);
+        this.setForm.controls['setYear'].setValue(set.year);
+        this.setForm.controls['setTheme'].setValue(set.theme);
+      })
   }
 
   addSet(event) {
@@ -88,7 +112,6 @@ export class SetEntryPage implements OnInit {
         this.barcodeGateway.getBarcodeData(barcodeData.text)
       .subscribe(barcodeObject => {
         this.barcodeReturn = barcodeObject;
-        console.log('se bcr', this.barcodeReturn);
         this.setForm.controls['setName'].setValue(barcodeObject.items[0].title);
         this.setForm.controls['setNumber'].setValue(barcodeObject.items[0].ean);
         this.setForm.controls['setPieces'].setValue(barcodeObject.items[0].title);

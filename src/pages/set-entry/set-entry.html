@@ -17,6 +17,23 @@
     </div>
   </div>
   <div class="container">
+    <div>
+      <h4>Find Set Form</h4>
+      <form [formGroup]="findSetForm" class="container">
+        <div class="row">
+          <div class="form-group col-sm-12 col-md-6">
+            <label for="findSetFormNumber">Set Number</label>
+            <input type="text"
+                  class="form-control"
+                  formControlName="findSetFormNumber"
+                  id="findSetFormNumber">
+          </div>
+        </div>
+      </form>
+    <button type="submit" class="btn btn-success btn-block" (click)="findSetByNumber()">Find Set</button>
+    </div>
+  </div>
+  <div class="container">
     <form [formGroup]="setForm" class="container">
       <div class="row">
         <div class="form-group col-sm-12 col-md-6">
