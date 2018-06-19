@@ -83,7 +83,7 @@ export class SetEntryPage implements OnInit {
       })
   }
 
-  addSet(event) {
+  addSet() {
     let newSet;
     newSet = {setName: this.setForm.get('setName').value,
             setNumber : this.setForm.get('setNumber').value,
@@ -93,9 +93,8 @@ export class SetEntryPage implements OnInit {
             setLocation: this.setForm.get('storageLocation').value,
             // barcodeValue: this.barcodeGateway.getBarcodeData(this.barcodeValue),
     }
-    this.dbGateway.addSet(newSet)
+    this.dbGateway.addToCollection(newSet)
       .subscribe(set => {
-        this.sets.push(set)
         this.displayFormSuccess = true;
         this.setForm.reset();
       })

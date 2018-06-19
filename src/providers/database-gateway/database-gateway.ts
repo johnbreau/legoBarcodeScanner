@@ -10,19 +10,7 @@ export class DatabaseGateway {
   public sets: any;
 
   constructor(private http: Http) {
-    console.log('database gateway working');
-  }
-
-  // getCollection(){
-  //   return this.http.get('http://localhost:9000/api/sets')
-  //     .map(res => res.json());
-  // }
-
-  addSet(newSet){
-    var headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:9000/api/set', JSON.stringify(newSet), {headers: headers})
-      .map(res => res.json());
+   
   }
 
   deleteSet(id){
@@ -42,6 +30,13 @@ export class DatabaseGateway {
     headers.append('Content-Type', 'application/json');		
     return this.http.get('https://api.mlab.com/api/1/databases/lego-barcode-scanner/collections/sets?f={"setName": 1, "setNumber": 1, "setPieces":1, "setYear": 1, "setTheme":1}&l=200000&apiKey=0ICZTbnaNJoaKZDCnIl-NIZZ-Jd8_TmB')
       .map(response => response.json());
+  }
+
+  addToCollection(newSet) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('https://api.mlab.com/api/1/databases/lego-barcode-scanner/collections/sets?apiKey=0ICZTbnaNJoaKZDCnIl-NIZZ-Jd8_TmB', JSON.stringify(newSet), {headers: headers})
+      .map(res => res.json());
   }
 
 }
