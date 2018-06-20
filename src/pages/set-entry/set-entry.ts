@@ -30,6 +30,7 @@ export class SetEntryPage implements OnInit {
   public displaySet: any;
   public setData: any;
   public showSection = false;
+  public findSetFormClicked = false;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -55,7 +56,7 @@ export class SetEntryPage implements OnInit {
       setPieces: '',
       setYear: '',
       setTheme: '',
-      storageLocation: '',
+      setLocation: '',
       // barcodeValue: this.barcodeValue,
       disabled: [false]
     });
@@ -81,6 +82,7 @@ export class SetEntryPage implements OnInit {
         this.setForm.controls['setYear'].setValue(set.year);
         this.setForm.controls['setTheme'].setValue(set.theme);
       })
+    this.findSetFormClicked = true;
   }
 
   addSet() {
@@ -90,9 +92,10 @@ export class SetEntryPage implements OnInit {
             setPieces : this.setForm.get('setPieces').value,
             setYear : this.setForm.get('setYear').value,
             setTheme : this.setForm.get('setTheme').value,
-            setLocation: this.setForm.get('storageLocation').value,
+            setLocation: this.setForm.get('setLocation').value,
             // barcodeValue: this.barcodeGateway.getBarcodeData(this.barcodeValue),
     }
+    console.log('newSet', newSet)
     this.dbGateway.addToCollection(newSet)
       .subscribe(set => {
         this.displayFormSuccess = true;
@@ -102,7 +105,6 @@ export class SetEntryPage implements OnInit {
 
   bricksetTester(){
     this.bricksetGateway.bricketGetSet();
-    console.log('bs test');
   }
 
   scanButton(){

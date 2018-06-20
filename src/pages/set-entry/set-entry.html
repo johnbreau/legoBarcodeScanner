@@ -11,32 +11,37 @@
 
 <ion-content padding>
   <div *ngIf="displayFormSuccess" class="successBanner">Set Successfully Submitted<span class="closeButton" (click)="closeBanner()">X</span></div>
-  <div class="container">
-    <div class="row px-5 mb-20">
-        <button class="col- btn btn-outline-primary btn-block scan-button" (click)="scanButton()" type="submit">Barcode Scan</button>
-    </div>
-  </div>
-  <div class="container">
-    <div>
-      <h4>Find Set Form</h4>
+
+  <div class="container find-set-form-container" *ngIf="!findSetFormClicked">
+    <h4 class="center-text">Find Set Form</h4>
+    <div class="instruction-box">
+      <div class="instruction-header">Enter Set Number...</div>
       <form [formGroup]="findSetForm" class="container">
         <div class="row">
-          <div class="form-group col-sm-12 col-md-6">
-            <label for="findSetFormNumber">Set Number</label>
+          <div class="form-group col-lg-12">
             <input type="text"
                   class="form-control"
                   formControlName="findSetFormNumber"
                   id="findSetFormNumber">
           </div>
         </div>
+        <div class="row px-3">
+          <button type="submit" class="btn btn-success btn-block" (click)="findSetByNumber()">Find Set by Number</button>
+        </div>
       </form>
-    <button type="submit" class="btn btn-success btn-block" (click)="findSetByNumber()">Find Set</button>
+    </div>
+    <div class="instruction-box">
+      <div class="instruction-header">Or Scan Barcode...</div>
+      <div class="row px-5 mb-20">
+        <button class="btn btn-success btn-block" (click)="scanButton()" type="submit">Find Set by Barcode</button>
+      </div>
     </div>
   </div>
-  <div class="container">
+  
+    <div class="container" *ngIf="findSetFormClicked">
     <form [formGroup]="setForm" class="container">
       <div class="row">
-        <div class="form-group col-sm-12 col-md-6">
+        <div class="form-group col-lg-12">
           <label for="setName">Set Name</label>
           <input type="text"
                 class="form-control"
@@ -44,7 +49,7 @@
                 id="setName" required>
         </div>
 
-        <div class="form-group col-sm-12 col-md-6">
+        <div class="form-group col-lg-12">
           <label for="setNumber">Set Number</label>
           <input type="text"
                 class="form-control"
@@ -54,7 +59,7 @@
       </div>
 
       <div class="row">
-        <div class="form-group col-sm-12 col-md-6">
+          <div class="form-group col-lg-12">
           <label for="setPieces">Number of Pieces</label>
           <input type="number"
                 class="form-control"
@@ -62,7 +67,7 @@
                 id="setPieces">
         </div>
 
-        <div class="form-group col-sm-12 col-md-6">
+        <div class="form-group col-lg-12">
           <label for="setYear">Year</label>
           <input type="text"
                 class="form-control"
@@ -72,7 +77,7 @@
       </div>
 
       <div class="row mb-20">
-        <div class="form-group col-sm-12 col-md-6">
+          <div class="form-group col-lg-12">
           <label for="setTheme">Theme</label>
           <input type="text"
                 class="form-control"
@@ -80,12 +85,27 @@
                 id="setTheme">
         </div>
 
-        <div class="form-group col-sm-12 col-md-6">
-          <label for="storageLocation">Storage Location</label>
-          <input type="text"
-                class="form-control"
-                formControlName="storageLocation"
-                id="storageLocation">
+        <div class="form-group col-lg-12">
+          <label for="setLocation">Storage Location</label>
+            <select class="form-control" id="setLocation" formControlName="setLocation" required>
+                <option value="Display">Display</option>
+                <option value="Shelf A">Shelf A</option>
+                <option value="Shelf B">Shelf B</option>
+                <option value="Shelf C">Shelf C</option>
+                <option value="Shelf D">Shelf D</option>
+                <option value="Shelf E">Shelf E</option>
+                <option value="Shelf F">Shelf F</option>
+                <option value="Bin A">Bin A</option>
+                <option value="Bin B">Bin B</option>
+                <option value="Bin C">Bin C</option>
+                <option value="Bin D">Bin D</option>
+                <option value="Bin E">Bin E</option>
+                <option value="Bin F">Bin F</option>
+                <option value="Bin G">Bin G</option>
+                <option value="Bin H">Bin H</option>
+                <option value="Bin I">Bin I</option>
+                <option value="Bin J">Bin J</option>
+            </select>
         </div>
 
         <!-- <div class="form-group col-sm-12 col-md-6">
@@ -97,11 +117,7 @@
         </div> -->
       </div>
       <div class="row px-3">
-        <button type="submit" class="btn btn-success btn-block" (click)="addSet()">Add Set</button>
-        <button type="submit" class="btn btn-success btn-block" (click)="bricksetTester()">BS Test</button>
-        <ul>
-          <li></li>
-        </ul>
+        <button type="submit" class="btn btn-success btn-block" (click)="addSet()">Add Set To Collection</button>
       </div>
     </form>
     <div>

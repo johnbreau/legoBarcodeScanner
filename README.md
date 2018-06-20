@@ -6,6 +6,11 @@
 ionic cordova run browser
 ```
 
+### To run with live reload...
+```bash
+ionic serve --live-reload
+```
+
 #### To run node server...
 ```bash
 nodemon

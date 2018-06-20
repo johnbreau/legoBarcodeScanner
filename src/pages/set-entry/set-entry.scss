@@ -19,7 +19,11 @@ table {
     border: 1px solid #ccc; 
     text-align: left; 
 	}
-	
+
+.center-text {
+	text-align: center;
+}
+
 .successBanner {
 	margin: 40px 0;
 	width: 100%;
@@ -93,4 +97,19 @@ only screen and (max-width: 760px),
 	td:nth-of-type(4):before { content: "Year"; }
 	td:nth-of-type(6):before { content: "Theme"; }
 	td:nth-of-type(7):before { content: "Storage"; }
+}
+
+.find-set-form-container {
+	margin-bottom: 20px;
+}
+
+.instruction-header {
+	font-size: 15px;
+	margin-bottom: 10px;
+}
+
+.instruction-box {
+	padding: 20px;
+	margin: 10px auto;
+	border: 1px solid darkgray;
 }
