@@ -61,6 +61,7 @@ export class SetDatabasePage implements OnInit {
   //     console.log(data;)
   //   }
   // }
+  //
 
   ngOnInit() {
     // this.dbGateway.getCollection();
