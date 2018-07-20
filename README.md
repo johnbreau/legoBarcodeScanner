@@ -6,12 +6,12 @@
 ionic cordova run browser
 ```
 
-### To run with live reload...
-```bash
-ionic serve --live-reload
-```
-
 #### To run node server...
 ```bash
 nodemon
+```
+
+#### or from legoNodeServer Directory...
+```bash
+node server.js
 ```
