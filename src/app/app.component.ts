@@ -4,7 +4,7 @@ import { Platform, MenuController, Nav } from 'ionic-angular';
 
 import { SetEntryPage } from '../pages/set-entry/set-entry';
 import { SetDatabasePage } from '../pages/set-database/set-database';
-import { QueryAllSetsPage } from '../pages/query-all-sets/query-all-sets';
+import { QueryMyCollectionPage } from '../pages/query-my-collection/query-my-collection';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -32,7 +32,7 @@ export class MyApp {
     this.pages = [
       { title: 'Add a Set', component: SetEntryPage },
       { title: 'My Sets', component: SetDatabasePage },
-      { title: 'Query all Sets', component: QueryAllSetsPage }
+      { title: 'Query all Sets', component: QueryMyCollectionPage }
     ];
   }
 

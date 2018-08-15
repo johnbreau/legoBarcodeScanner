@@ -6,7 +6,7 @@ import { MyApp } from './app.component';
 
 import { SetEntryPage } from '../pages/set-entry/set-entry';
 import { SetDatabasePage } from '../pages/set-database/set-database';
-import { QueryAllSetsPage } from '../pages/query-all-sets/query-all-sets';
+import { QueryMyCollectionPage } from '../pages/query-my-collection/query-my-collection';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -23,7 +23,7 @@ import { AllSetsDbGateway } from '../providers/all-sets-db-gateway/all-sets-db-g
     MyApp,
     SetEntryPage,
     SetDatabasePage,
-    QueryAllSetsPage,
+    QueryMyCollectionPage,
     SuccessModalPage,
   ],
   imports: [
@@ -38,7 +38,7 @@ import { AllSetsDbGateway } from '../providers/all-sets-db-gateway/all-sets-db-g
     SetDatabasePage,
     SetEntryPage,
     SuccessModalPage,
-    QueryAllSetsPage,
+    QueryMyCollectionPage,
   ],
   providers: [
     StatusBar,

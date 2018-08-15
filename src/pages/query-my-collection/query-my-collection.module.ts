@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { QueryAllSetsPage } from './query-all-sets';
+import { QueryMyCollectionPage } from './query-my-collection';
 
 @NgModule({
   declarations: [
-    QueryAllSetsPage,
+    QueryMyCollectionPage,
   ],
   imports: [
-    IonicPageModule.forChild(QueryAllSetsPage),
+    IonicPageModule.forChild(QueryMyCollectionPage),
   ],
 })
 export class QueryAllSetsModule {}

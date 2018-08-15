@@ -7,10 +7,10 @@ import { AllSetsDbGateway } from '../../providers/all-sets-db-gateway/all-sets-d
 
 @IonicPage()
 @Component({
-  selector: 'query-all-sets',
-  templateUrl: 'query-all-sets.html',
+  selector: 'query-my-collection',
+  templateUrl: 'query-my-collection.html',
 })
-export class QueryAllSetsPage implements OnInit {
+export class QueryMyCollectionPage implements OnInit {
   public displaySet: any;
   public setData: any;
   public setFinder: FormGroup;
