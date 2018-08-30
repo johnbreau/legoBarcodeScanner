@@ -9,7 +9,7 @@ import { BricksetGateway } from '../../providers/brickset-gateway/brickset-gatew
 import { ModalController } from 'ionic-angular';
 import { SuccessModalPage } from '../success-modal/success-modal';
 import { Set } from '../../providers/database-gateway/set';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @IonicPage()
 @Component({
